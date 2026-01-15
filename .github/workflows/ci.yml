@@ -3,11 +3,6 @@ on:
   pull_request:
     branches: [ "main" ]
   workflow_call:
-    jobs:
-      ci:
-        uses: ./.github/workflows/ci.yml
-      deploy:
-        needs: [ci]
 
 jobs:
   html-validator:

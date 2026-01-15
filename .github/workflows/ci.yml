@@ -1,7 +1,14 @@
 name: CI
 on:
-  push:
+  pull_request:
     branches: [ "main" ]
+  workflow_call:
+    jobs:
+      ci:
+        uses: ./.github/workflows/ci.yml
+      deploy:
+        needs: [ci]
+
 jobs:
   html-validator:
     runs-on: ubuntu-latest
